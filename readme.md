@@ -39,26 +39,46 @@ $ obfuscator --entry app.js ./app.js ./routes/index.js ./routes/user.js
 Tested with both 0.3.x and 0.4.x.  It should work until the [grunt] people change everything again.
 
 ```javascript
-/*jslint node:true*/
-
 module.exports = function (grunt) {
-	'use strict';
+  'use strict';
 
-	grunt.loadNpmTasks('obfuscator'); // load the task
+  grunt.loadNpmTasks('obfuscator'); // load the task
 
-	grunt.initConfig({
-		obfuscator: {
-			files: [
-				'app.js',
-				'lib/routes/*.js'
-			],
-			entry: 'app.js',
-			out: 'obfuscated.js'
-		}
-	});
+  grunt.initConfig({
+    obfuscator: {
+      files: [
+        'app.js',
+        'lib/routes/*.js'
+      ],
+      entry: 'app.js',
+      out: 'obfuscated.js'
+    }
+  });
 
-	grunt.registerTask('default', 'obfuscator');
+  grunt.registerTask('default', 'obfuscator');
 };
+```
+
+### Raw JavaScript API
+
+```javascript
+var Options = require('obfuscator').Options;
+var obfuscator = require('obfuscator').obfuscator;
+var fs = require('fs');
+var options = new Options([ '/path/to/file1.js', '/path/to/file2.js' ], '/path/to', 'file1.js');
+obfuscator(options, function (err, obfuscated) {
+  if (err) {
+    throw err;
+  }
+  fs.writeFile('./cool.js', function (err) {
+    if (err) {
+      throw err;
+    }
+
+    console.log('cool.');
+  });
+});
+
 ```
 
 ## How it Works
