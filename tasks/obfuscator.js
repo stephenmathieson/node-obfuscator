@@ -10,14 +10,16 @@ module.exports = function (grunt) {
 	/**
 	 * Grabs a config option from the obfuscator namespace
 	 *
-	 * @param  {String} option The option/configuration key
-	 * @return {Mixed|Any}     The key's value
+	 * @param {String} option The option/configuration key
+	 * @return {Mixed|Any} The key's value
 	 */
 	function config(option) {
 		return grunt.config('obfuscator.' + option);
 	}
 
-
+	/**
+	 * The task; obfuscates a package with help from grunt
+	 */
 	grunt.registerTask('obfuscator', 'Mangle your node project', function () {
 		var options,
 			next = this.async(),
