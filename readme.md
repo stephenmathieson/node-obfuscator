@@ -106,3 +106,4 @@ Do it, but add tests for your changes.  Tests should be written with [Vows].  Us
 [UglifyJS]: https://github.com/mishoo/UglifyJS2
 [Vows]: https://github.com/cloudhead/vows
 [examples]: https://github.com/stephenmathieson/node-obfuscator/tree/master/examples
+[grunt]: https://github.com/gruntjs/grunt
