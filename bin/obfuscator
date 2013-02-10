@@ -1,0 +1,51 @@
+#!/usr/bin/env node
+
+/*jslint node:true*/
+
+'use strict';
+
+var program = require('commander');
+
+var fs = require('fs');
+
+var Options = require('../lib/obfuscator').Options;
+
+var obfuscator = require('../lib/obfuscator').obfuscator;
+
+program
+	.version(require('../package.json').vesion)
+	.option('--entry <file>', 'The application\'s entry point', String)
+	.option('--root <directory>', 'The application\'s root directory',
+		String, process.cwd())
+	.option('--out <file>', 'The output file', String)
+	.option('--no-color', 'Disable colored output', Boolean, false)
+	.parse(process.argv);
+
+var options = new Options(program.args, program.root, program.entry);
+
+obfuscator(options, function (err, obfuscated) {
+	if (err) {
+		throw err;
+	}
+
+	if (program.out) {
+		fs.writeFile(program.out, obfuscated, function (err) {
+			if (err) {
+				throw err;
+			}
+
+			var message = 'wrote ';
+
+			if (program['no-color']) {
+				message += program.out;
+			} else {
+				message += '\x1B[36m' + program.out + '\x1B[39m';
+			}
+
+			console.log(message);
+		});
+	} else {
+		console.log(obfuscated);
+	}
+});
+

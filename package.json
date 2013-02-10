@@ -6,7 +6,8 @@
 		"test": "./test.sh"
 	},
 	"dependencies": {
-		"uglify-js": "*"
+		"uglify-js": "*",
+		"commander": "*"
 	},
 	"devDependencies": {
 		"vows": "*",
