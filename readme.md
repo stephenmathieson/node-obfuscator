@@ -28,7 +28,7 @@ Because I had this conversation:
 
 ## Usage
 
-### Command Line (installed globally with the `-g` flag):
+### Command Line (installed globally with the `-g` flag)
 
 ```
 $ obfuscator --entry app.js ./app.js ./routes/index.js ./routes/user.js
@@ -78,8 +78,9 @@ obfuscator(options, function (err, obfuscated) {
     console.log('cool.');
   });
 });
-
 ```
+
+Also see [examples].
 
 ## How it Works
 
@@ -104,3 +105,4 @@ Do it, but add tests for your changes.  Tests should be written with [Vows].  Us
 [browserify]: https://github.com/substack/node-browserify
 [UglifyJS]: https://github.com/mishoo/UglifyJS2
 [Vows]: https://github.com/cloudhead/vows
+[examples]: https://github.com/stephenmathieson/node-obfuscator/tree/master/examples
