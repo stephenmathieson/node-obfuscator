@@ -10,21 +10,21 @@ Standard node install via [npm]: `npm install obfuscator`
 
 Because I had this conversation:
 
-> **you**: hi boss.  this application should be written in node, not java.  node is good and stuff.
+> **me**: hi boss.  this application should be written in node, not java.  node is good and stuff.
 
 > **boss**: oh, okay.  node sounds great.  what about code protection so people don't steal our software?
 
-> **you**: ...
+> **me**: ...
 
 > **boss**: you can't use node.
 
 ... but now:
 
-> **you**: hi boss.  first off, code protection is stupid.  secondly, java can be decompiled.
+> **me**: hi boss.  first off, code protection is stupid.  secondly, java can be decompiled.
 
 > **boss**: but decompiling java is a lot of work.
 
-> **you**: so is [un-obfuscating javascript]!
+> **me**: so is [un-obfuscating javascript]!
 
 ## Usage
 
