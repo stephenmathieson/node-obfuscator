@@ -4,7 +4,7 @@ Obfuscate your node packages because your boss says so!
 
 ## Installation
 
-Standard node install via [npm](obfuscator_npm): `npm install obfuscator`
+Standard node install via [npm]: `npm install obfuscator`
 
 ## Why?
 
@@ -24,7 +24,7 @@ Because I had this conversation:
 
 > **boss**: but decompiling java is a lot of work.
 
-> **you**: so is [un-obfuscating javascript](obfuscator_github)!
+> **you**: so is [un-obfuscating javascript]!
 
 ## Usage
 
@@ -36,7 +36,7 @@ $ obfuscator --entry app.js ./app.js ./routes/index.js ./routes/user.js
 
 ### Grunt
 
-Tested with both 0.3.x and 0.4.x.  It should work until the [grunt](grunt) people change everything again.
+Tested with both 0.3.x and 0.4.x.  It should work until the [grunt] people change everything again.
 
 ```javascript
 /*jslint node:true*/
@@ -63,7 +63,7 @@ module.exports = function (grunt) {
 
 ## How it Works
 
-Think [browserify](browserify) only for node, plus [UglifyJs](uglify).  Your entire project will be concatenated into a single file.  This file will contain a stubbed `require` function, which will handle everything for you.  This single file will be run through [UglifyJs](uglify), making it more difficult to read.
+Think [browserify] only for node, plus [UglifyJs].  Your entire project will be concatenated into a single file.  This file will contain a stubbed `require` function, which will handle everything for you.  This single file will be run through [UglifyJs], making it more difficult to read.
 
 Undoing this process is hopefully as painful as decompiling java bytecode.
 
@@ -76,11 +76,11 @@ Undoing this process is hopefully as painful as decompiling java bytecode.
 
 ## Contrubuting
 
-Do it, but add tests for your changes.  Tests should be written with [Vows](vows).  Use JSLint whitespace rules.
+Do it, but add tests for your changes.  Tests should be written with [Vows].  Use JSLint whitespace rules.
 
 
-[obfuscator_npm]: http://npmjs.org/node-obfuscator
-[obfuscator_github]: http://github.com/stephenmathieson/node-obfuscator
+[npm]: https://github.com/isaacs/npm
+[un-obfuscating javascript]: http://github.com/stephenmathieson/node-obfuscator
 [browserify]: https://github.com/substack/node-browserify
-[uglify]: https://github.com/mishoo/UglifyJS2
-[vows]: https://github.com/cloudhead/vows
+[UglifyJS]: https://github.com/mishoo/UglifyJS2
+[Vows]: https://github.com/cloudhead/vows
