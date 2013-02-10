@@ -9,6 +9,10 @@
 		"uglify-js": "*"
 	},
 	"devDependencies": {
-		"vows": "*"
-	}
+		"vows": "*",
+		"grunt": "*",
+		"grunt-jslint": "*"
+	},
+	"bin": "bin/obfuscator",
+	"preferGlobal": true
 }
