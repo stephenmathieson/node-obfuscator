@@ -1,0 +1,10 @@
+{
+	"name": "obfuscator-example",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "node obfuscated",
+		"build": "node build"
+	},
+	"dependencies": {}
+}
