@@ -70,7 +70,7 @@ obfuscator(options, function (err, obfuscated) {
   if (err) {
     throw err;
   }
-  fs.writeFile('./cool.js', function (err) {
+  fs.writeFile('./cool.js', obfuscated, function (err) {
     if (err) {
       throw err;
     }
