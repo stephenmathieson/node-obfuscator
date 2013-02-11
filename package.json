@@ -1,6 +1,6 @@
 {
 	"name": "obfuscator",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"scripts": {
 		"test": "./test.sh"
 	},
@@ -14,5 +14,6 @@
 		"grunt-jslint": "*"
 	},
 	"bin": "bin/obfuscator",
+	"main": "lib/obfuscator",
 	"preferGlobal": true
 }
