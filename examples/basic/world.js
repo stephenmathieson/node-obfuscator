@@ -1,0 +1,1 @@
+exports.world = 'world';
