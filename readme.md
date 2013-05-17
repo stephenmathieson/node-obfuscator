@@ -81,7 +81,7 @@ obfuscator(options, function (err, obfuscated) {
 });
 ```
 
-Also see [examples] or the [docs].
+Also see [acceptance tests] or the [docs].
 
 ## How it Works
 
@@ -96,7 +96,7 @@ Undoing this process is hopefully as painful as decompiling java bytecode.
 - you're not able to do silly things with `module.`
 - you don't have access to the global namespace
 
-## Contrubuting
+## Contributing
 
 Do it, but add tests for your changes.  Tests should be written with [Vows].  Use JSLint whitespace rules.
 
@@ -117,6 +117,6 @@ Do it, but add tests for your changes.  Tests should be written with [Vows].  Us
 [browserify]: https://github.com/substack/node-browserify
 [UglifyJS]: https://github.com/mishoo/UglifyJS2
 [Vows]: https://github.com/cloudhead/vows
-[examples]: https://github.com/stephenmathieson/node-obfuscator/tree/master/examples
+[acceptance tests]: https://github.com/stephenmathieson/node-obfuscator/tree/master/test/acceptance
 [grunt]: https://github.com/gruntjs/grunt
 [docs]: https://github.com/stephenmathieson/node-obfuscator/tree/master/docs.md
