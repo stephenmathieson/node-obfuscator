@@ -4,6 +4,17 @@
   "scripts": {
     "test": "make validate"
   },
+  "description": "Code protection / obfuscation for node",
+  "keywords": [
+    "code protection",
+    "obfuscator",
+    "uglify"
+  ],
+  "author": "Stephen Mathieson <me@stephenmathieson.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stephenmathieson/node-obfuscator.git"
+  },
   "dependencies": {
     "uglify-js": "~2.3.4",
     "commander": "~1.1.1"
