@@ -1,19 +1,20 @@
 {
-	"name": "obfuscator",
-	"version": "0.0.2",
-	"scripts": {
-		"test": "./test.sh"
-	},
-	"dependencies": {
-		"uglify-js": "*",
-		"commander": "*"
-	},
-	"devDependencies": {
-		"vows": "*",
-		"grunt": "*",
-		"grunt-jslint": "*"
-	},
-	"bin": "bin/obfuscator",
-	"main": "lib/obfuscator",
-	"preferGlobal": true
+  "name": "obfuscator",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "make validate"
+  },
+  "dependencies": {
+    "uglify-js": "~2.3.4",
+    "commander": "~1.1.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.9.0",
+    "jshint": "~2.0.1",
+    "should": "~1.2.2",
+    "supertest": "~0.6.0"
+  },
+  "bin": "bin/obfuscator",
+  "main": "index.js",
+  "preferGlobal": true
 }
