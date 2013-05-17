@@ -4,7 +4,7 @@ Obfuscate your node packages because your boss says so!
 
 ## Installation
 
-Standard node install via [npm]: `npm install obfuscator`
+Standard node install via [npm]: `npm i obfuscator`
 
 ## Why?
 
@@ -51,7 +51,8 @@ module.exports = function (grunt) {
         'lib/routes/*.js'
       ],
       entry: 'app.js',
-      out: 'obfuscated.js'
+      out: 'obfuscated.js',
+      strings: true
     }
   });
 
@@ -65,7 +66,7 @@ module.exports = function (grunt) {
 var Options = require('obfuscator').Options;
 var obfuscator = require('obfuscator').obfuscator;
 var fs = require('fs');
-var options = new Options([ '/path/to/file1.js', '/path/to/file2.js' ], '/path/to', 'file1.js');
+var options = new Options([ '/path/to/file1.js', '/path/to/file2.js' ], '/path/to', 'file1.js', true);
 obfuscator(options, function (err, obfuscated) {
   if (err) {
     throw err;
@@ -80,7 +81,7 @@ obfuscator(options, function (err, obfuscated) {
 });
 ```
 
-Also see [examples].
+Also see [examples] or the [docs].
 
 ## How it Works
 
@@ -100,6 +101,17 @@ Undoing this process is hopefully as painful as decompiling java bytecode.
 Do it, but add tests for your changes.  Tests should be written with [Vows].  Use JSLint whitespace rules.
 
 
+## Release History
+
+### 0.1.0
+
+- added `string` option, optionally obfuscating strings contained in your package
+- added ability to export from an _"obfuscated"_ package
+
+### 0.0.2
+
+- initial release
+
 [npm]: https://github.com/isaacs/npm
 [un-obfuscating javascript]: http://github.com/stephenmathieson/node-obfuscator
 [browserify]: https://github.com/substack/node-browserify
@@ -107,3 +119,4 @@ Do it, but add tests for your changes.  Tests should be written with [Vows].  Us
 [Vows]: https://github.com/cloudhead/vows
 [examples]: https://github.com/stephenmathieson/node-obfuscator/tree/master/examples
 [grunt]: https://github.com/gruntjs/grunt
+[docs]: https://github.com/stephenmathieson/node-obfuscator/tree/master/docs.md

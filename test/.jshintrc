@@ -1,0 +1,13 @@
+{
+  "globals": {
+    "describe": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false,
+    "it": false
+  },
+  "node": true,
+  "expr": true,
+  "laxbreak": true
+}

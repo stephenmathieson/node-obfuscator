@@ -1,10 +1,7 @@
 {
-	"name": "obfuscator-example",
-	"version": "0.0.1",
+	"name": "obfuscator-http-example",
+	"version": "0.0.0",
 	"private": true,
-	"scripts": {
-		"start": "node obfuscated",
-		"build": "node build"
-	},
+	"scripts": {},
 	"dependencies": {}
 }

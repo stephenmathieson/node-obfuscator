@@ -1,0 +1,9 @@
+{
+  "node": true,
+  "laxbreak": true,
+  "indent": 2,
+  "maxstatements": 8,
+  "maxcomplexity": 4,
+  "maxlen": 80,
+  "expr": true
+}
