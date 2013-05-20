@@ -98,7 +98,7 @@ Undoing this process is hopefully as painful as decompiling java bytecode.
 
 ## Contributing
 
-Do it, but add tests for your changes.  Tests should be written with [Vows].  Use JSLint whitespace rules.
+Do it, but add tests for your changes.  Tests should be written with [Mocha].
 
 
 ## Release History
@@ -143,7 +143,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 [un-obfuscating javascript]: http://github.com/stephenmathieson/node-obfuscator
 [browserify]: https://github.com/substack/node-browserify
 [UglifyJS]: https://github.com/mishoo/UglifyJS2
-[Vows]: https://github.com/cloudhead/vows
+[Mocha]: https://github.com/visionmedia/mocha
 [acceptance tests]: https://github.com/stephenmathieson/node-obfuscator/tree/master/test/acceptance
 [grunt]: https://github.com/gruntjs/grunt
 [docs]: https://github.com/stephenmathieson/node-obfuscator/tree/master/docs.md
