@@ -155,7 +155,7 @@ describe('obfuscator', function () {
           done(err);
         }
 
-        js.should.include('require.register("' + utils.hex('./basic/hello.js') + '",');
+        js.should.include('require.register("./basic/hello.js",');
         done();
       });
     });
@@ -197,7 +197,7 @@ describe('obfuscator', function () {
         code.should.include(read(path.join(__dirname, '../lib/require.js')));
       });
       it('should export the entry point\'s exports', function () {
-        code.should.include('this_module.exports = require("' + utils.hex('./hello-world.js') + '");');
+        code.should.include('this_module.exports = require("./hello-world.js");');
       });
       it('should end the iffe', function () {
         code.should.match(/\}\(require, module\)\)\;$/);
@@ -235,7 +235,7 @@ describe('obfuscator', function () {
         code.should.include(read(path.join(__dirname, '../lib/require.js')));
       });
       it('should export the entry point\'s exports', function () {
-        code.should.include('this_module.exports = require("' + utils.hex('./hello-world.js') + '");');
+        code.should.include('this_module.exports = require("./hello-world.js");');
       });
       it('should end the iffe', function () {
         code.should.match(/\}\(require, module\)\)\;$/);
