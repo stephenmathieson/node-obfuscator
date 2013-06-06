@@ -12,8 +12,11 @@ lint:
 test:
 	@node_modules/.bin/mocha -R spec -r should
 
-test-acceptance: $(ACCEPTANCE_TESTS)
+test-acceptance: examples/express/node_modules $(ACCEPTANCE_TESTS)
 	@echo 'everything looks good'
+
+examples/express/node_modules:
+	npm i express ejs stylus examples/express
 
 $(ACCEPTANCE_TESTS):
 	node $@
