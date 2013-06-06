@@ -1,5 +1,8 @@
 # Obfuscator
 
+
+[![Build Status](https://travis-ci.org/stephenmathieson/node-obfuscator.png?branch=master)](https://travis-ci.org/stephenmathieson/node-obfuscator) [![Dependency Status](https://gemnasium.com/stephenmathieson/node-obfuscator.png)](https://gemnasium.com/stephenmathieson/node-obfuscator)
+
 Obfuscate your node packages because your boss says so!
 
 ## Installation
