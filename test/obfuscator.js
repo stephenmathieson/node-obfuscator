@@ -1,3 +1,4 @@
+
 'use strict';
 
 var read = require('fs').readFileSync,
@@ -24,6 +25,7 @@ describe('obfuscator', function () {
     it('should be a function', function () {
       obfuscator.obfuscator.should.be.a.function;
     });
+
     it('should error when given invalid options', function (done) {
       obfuscator.obfuscator({}, function (err) {
         if (!err) {
@@ -32,6 +34,7 @@ describe('obfuscator', function () {
         done();
       });
     });
+
     it('should an obfuscated package', function (done) {
       var opts = obfuscator.options([
               fixture('basic/hello.js'),
@@ -40,6 +43,7 @@ describe('obfuscator', function () {
             ],
             FIXTURES,
             fixture('basic/hello-world'));
+
       obfuscator.obfuscator(opts, function (err, code) {
         err
           ? done(err)
@@ -47,6 +51,7 @@ describe('obfuscator', function () {
         done();
       });
     });
+
     it('should not obfuscate strings by default', function (done) {
       var opts = obfuscator.options([
               fixture('basic/hello.js'),
@@ -55,6 +60,7 @@ describe('obfuscator', function () {
             ],
             FIXTURES,
             fixture('basic/hello-world'));
+
       obfuscator.obfuscator(opts, function (err, code) {
         err
           ? done(err)
@@ -64,6 +70,7 @@ describe('obfuscator', function () {
         done();
       });
     });
+
     it('should obfuscate strings when strings=true', function (done) {
       var opts = obfuscator.options([
               fixture('basic/hello.js'),
@@ -73,6 +80,7 @@ describe('obfuscator', function () {
             FIXTURES,
             fixture('basic/hello-world'),
             true);
+
       obfuscator.obfuscator(opts, function (err, code) {
         err
           ? done(err)
@@ -88,37 +96,45 @@ describe('obfuscator', function () {
     it('should be a function', function () {
       obfuscator.Options.should.be.a.function;
     });
+
     it('should be aliased as Options', function () {
       obfuscator.options.should.be.eql(obfuscator.Options);
     });
+
     it('should be aliased as ObfuscatorOptions', function () {
       obfuscator.options.should.be.eql(obfuscator.ObfuscatorOptions);
     });
+
     it('should throw without files', function () {
       (function () {
         obfuscator.options(null, 'foo', 'bar');
       }).should.throw(/files/);
     });
+
     it('should throw with a bad root', function () {
       (function () {
         obfuscator.options([ 'file.js' ], null, 'bar');
       }).should.throw(/root/);
     });
+
     it('should throw with a bad entry', function () {
       (function () {
         obfuscator.options([ 'file.js' ], 'foo', null);
       }).should.throw(/entry/);
     });
+
     it('should force ./ on the entrypoint', function () {
       var opts = obfuscator.options(['file.js'], 'foo', 'bar');
       opts.entry.should.be.equal('./bar');
     });
+
     it('should work when invoked with "new"', function () {
       var opts = new obfuscator.Options(['file.js'], 'foo', 'bar');
       opts.files.should.be.eql(['file.js']);
       opts.root.should.be.equal('foo');
       opts.entry.should.be.equal('./bar');
     });
+
     it('should work when invoked without "new"', function () {
       var opts = obfuscator.options(['file.js'], 'foo', 'bar');
       opts.files.should.be.eql(['file.js']);
@@ -131,12 +147,14 @@ describe('obfuscator', function () {
     it('should be a function', function () {
       obfuscator.register.should.be.a.function;
     });
+
     it('should handle ENOENT errors', function (done) {
       obfuscator.register('fakeroot', 'fakefile', function (err) {
         err.code.should.be.equal('ENOENT');
         done();
       });
     });
+
     it('should wrap the file contents with require stuff', function (done) {
       obfuscator.register(FIXTURES, fixture('basic/hello.js'), function (err, js) {
         if (err) {
@@ -149,6 +167,7 @@ describe('obfuscator', function () {
         done();
       });
     });
+
     it('should register the file relative to the root', function (done) {
       obfuscator.register(FIXTURES, fixture('basic/hello.js'), function (err, js) {
         if (err) {
@@ -159,6 +178,7 @@ describe('obfuscator', function () {
         done();
       });
     });
+
     it('should handle JSON exporting', function (done) {
       obfuscator.register(FIXTURES, fixture('foo-bar.json'), function (err, js) {
         if (err) {
@@ -175,8 +195,10 @@ describe('obfuscator', function () {
     it('should be a function', function () {
       obfuscator.concatenate.should.be.a.function;
     });
+
     describe('given no files', function () {
       var code;
+
       beforeEach(function (done) {
         obfuscator.concatenate({
           files: [],
@@ -190,15 +212,19 @@ describe('obfuscator', function () {
           done();
         });
       });
+
       it('should start the iffe', function () {
         code.should.match(/^\(function \(native_require, this_module\) \{/);
       });
+
       it('should contain the require mock', function () {
         code.should.include(read(path.join(__dirname, '../lib/require.js')));
       });
+
       it('should export the entry point\'s exports', function () {
         code.should.include('this_module.exports = require("./hello-world.js");');
       });
+
       it('should end the iffe', function () {
         code.should.match(/\}\(require, module\)\)\;$/);
       });
@@ -206,6 +232,7 @@ describe('obfuscator', function () {
 
     describe('given files', function () {
       var code;
+
       beforeEach(function (done) {
         obfuscator.concatenate({
           files: [
@@ -223,20 +250,25 @@ describe('obfuscator', function () {
           done();
         });
       });
+
       it('should wrap each file', function () {
         code.should.include(fixture.read('basic/hello.js'));
         code.should.include(fixture.read('basic/world.js'));
         code.should.include(fixture.read('basic/hello-world.js'));
       });
+
       it('should start the iffe', function () {
         code.should.match(/^\(function \(native_require, this_module\) \{/);
       });
+
       it('should contain the require mock', function () {
         code.should.include(read(path.join(__dirname, '../lib/require.js')));
       });
+
       it('should export the entry point\'s exports', function () {
         code.should.include('this_module.exports = require("./hello-world.js");');
       });
+
       it('should end the iffe', function () {
         code.should.match(/\}\(require, module\)\)\;$/);
       });
@@ -292,14 +324,17 @@ describe('obfuscator', function () {
         var code = 'var foo = "b a r"';
         utils.strings(code).should.be.equal(code);
       });
+
       it('should ignore strings which contain "+"', function () {
         var code = 'var foo = "b+a+r"';
         utils.strings(code).should.be.equal(code);
       });
+
       it('should ignore strings which contain ";"', function () {
         var code = 'var foo = "b;a;r"';
         utils.strings(code).should.be.equal(code);
       });
+
       it('should ignore strings which contain ","', function () {
         var code = 'var foo = "b,a,r"';
         utils.strings(code).should.be.equal(code);
@@ -309,14 +344,17 @@ describe('obfuscator', function () {
         var code = 'var foo = "bar"';
         utils.strings(code).should.be.equal('var foo = "\\x62\\x61\\x72"');
       });
+
       it('should obfuscate a double-quote string which contains "/"', function () {
         var code = 'var foo = "bar/"';
         utils.strings(code).should.be.equal('var foo = "\\x62\\x61\\x72\\x2f"');
       });
+
       it('should obfuscate a double-quote string which contains "."', function () {
         var code = 'var foo = "bar."';
         utils.strings(code).should.be.equal('var foo = "\\x62\\x61\\x72\\x2e"');
       });
+
       it('should obfuscate a double-quote string which contains "_"', function () {
         var code = 'var foo = "bar_"';
         utils.strings(code).should.be.equal('var foo = "\\x62\\x61\\x72\\x5f"');
@@ -332,7 +370,5 @@ describe('obfuscator', function () {
         utils.strings(code).should.be.equal('var foo = "\\x62" + "\\x61" + "\\x72"');
       });
     });
-
   });
-
 });

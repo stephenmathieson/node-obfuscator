@@ -1,3 +1,4 @@
+
 ACCEPTANCE_TESTS := $(wildcard test/acceptance/*.js)
 
 validate: lint test test-acceptance
