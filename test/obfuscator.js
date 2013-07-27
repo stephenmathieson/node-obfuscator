@@ -4,7 +4,9 @@
 var read = require('fs').readFileSync,
     path = require('path'),
     obfuscator = require('..'),
-    utils = obfuscator.utils;
+    utils = obfuscator.utils,
+    uglifyjs = require('uglify-js'),
+    assert = require('better-assert');
 
 var FIXTURES = path.join(__dirname, '..', 'examples');
 
@@ -21,7 +23,7 @@ describe('obfuscator', function () {
     obfuscator.should.be.a.function;
   });
 
-  describe('.obfuscator', function () {
+  describe('.obfuscator()', function () {
     it('should be a function', function () {
       obfuscator.obfuscator.should.be.a.function;
     });
@@ -39,7 +41,7 @@ describe('obfuscator', function () {
       });
     });
 
-    it('should an obfuscated package', function (done) {
+    it('should obfuscate a package', function (done) {
       var opts = obfuscator.options([
               fixture('basic/hello.js'),
               fixture('basic/world.js'),
@@ -49,9 +51,11 @@ describe('obfuscator', function () {
             fixture('basic/hello-world'));
 
       obfuscator.obfuscator(opts, function (err, code) {
-        err
-          ? done(err)
-          : code.should.be.a.string;
+        if (err) {
+          return done(err);
+        }
+
+        code.should.be.a.string;
         done();
       });
     });
@@ -66,11 +70,13 @@ describe('obfuscator', function () {
             fixture('basic/hello-world'));
 
       obfuscator.obfuscator(opts, function (err, code) {
-        err
-          ? done(err)
-          : code.should.include('basic/hello') &&
-            code.should.include('basic/world') &&
-            code.should.include('basic/hello-world');
+        if (err) {
+          return done(err);
+        }
+
+        code.should.include('basic/hello');
+        code.should.include('basic/world');
+        code.should.include('basic/hello-world');
         done();
       });
     });
@@ -86,17 +92,19 @@ describe('obfuscator', function () {
             true);
 
       obfuscator.obfuscator(opts, function (err, code) {
-        err
-          ? done(err)
-          : code.should.not.include('basic/hello') &&
-            code.should.not.include('basic/world') &&
-            code.should.not.include('basic/hello-world');
+        if (err) {
+          return done(err);
+        }
+
+        code.should.not.include('basic/hello');
+        code.should.not.include('basic/world');
+        code.should.not.include('basic/hello-world');
         done();
       });
     });
   });
 
-  describe('.options', function () {
+  describe('.options()', function () {
     it('should be a function', function () {
       obfuscator.Options.should.be.a.function;
     });
@@ -147,7 +155,7 @@ describe('obfuscator', function () {
     });
   });
 
-  describe('.register', function () {
+  describe('.register()', function () {
     it('should be a function', function () {
       obfuscator.register.should.be.a.function;
     });
@@ -195,7 +203,7 @@ describe('obfuscator', function () {
     });
   });
 
-  describe('.concatenate', function () {
+  describe('.concatenate()', function () {
     it('should be a function', function () {
       obfuscator.concatenate.should.be.a.function;
     });
@@ -307,7 +315,88 @@ describe('obfuscator', function () {
   });
 
   describe('.utils', function () {
-    describe('.hex', function () {
+    describe('.uglify', function () {
+      it('should pass an error given bad js', function (done) {
+        utils.uglify('a b c d e', function (err) {
+          assert(err instanceof Error);
+          done();
+        });
+      });
+
+      it('should allow for custom compression options', function (done) {
+        var opts = {
+            compressor: {
+              join_vars: false
+            }
+          },
+          code = [
+            '(function () {',
+            '  var a = "a"',
+            '  var b = "b"',
+            '  alert(a + b)',
+            '}())'
+          ].join('\n');
+
+        utils.uglify(code, opts, function (err, js) {
+          if (err) {
+            return done(err);
+          }
+
+          js.match(/var/g).length.should.be.equal(2);
+          done();
+        });
+      });
+
+      it('should have default options', function () {
+        utils.compress.defaults.should.be.an.object;
+        utils.compress.defaults.join_vars.should.be.true;
+      });
+    });
+
+    describe('.ast()', function () {
+      var bad = 'blah blah blah',
+          good = 'var hello = "hello"';
+
+      it('should not throw given unparseable js', function (done) {
+        utils.ast(bad, function () {
+          done();
+        });
+      });
+
+      it('should pass an Error given unparseable js', function (done) {
+        utils.ast(bad, function (err) {
+          assert(err instanceof Error);
+          done();
+        });
+      });
+
+      it('should keep JS_Parse_Error properties', function (done) {
+        utils.ast(bad, function (err) {
+          assert(err.line);
+          assert(err.col);
+          assert(err.message);
+          done();
+        });
+      });
+
+      it('should provide a walkable AST given parseable js', function (done) {
+        utils.ast(good, function (err, ast) {
+          assert(ast.walk);
+
+          function walker() {
+            if (walker.done) {
+              return;
+            }
+            walker.done = true;
+            done();
+          }
+
+          ast.walk(new uglifyjs.TreeWalker(walker));
+        });
+      });
+    });
+
+    describe('.hex()', function () {
       it('should encode strings to their hex representations', function () {
         utils.hex('foo').should.be.equal('\\x66\\x6f\\x6f');
         utils.hex('bar').should.be.equal('\\x62\\x61\\x72');
@@ -317,7 +406,7 @@ describe('obfuscator', function () {
       });
     });
 
-    describe('.strings', function () {
+    describe('.strings()', function () {
       it('should ignore single-quote strings', function () {
         var code = "var foo = 'bar';";
 

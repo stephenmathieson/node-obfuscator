@@ -70,6 +70,18 @@ var Options = require('obfuscator').Options;
 var obfuscator = require('obfuscator').obfuscator;
 var fs = require('fs');
 var options = new Options([ '/path/to/file1.js', '/path/to/file2.js' ], '/path/to', 'file1.js', true);
+
+// custom compression options
+// see https://github.com/mishoo/UglifyJS2/#compressor-options
+options.compressor = {
+  conditionals: true,
+  evaluate: true,
+  booleans: true,
+  loops: true,
+  unused: false,
+  hoist_funs: false
+};
+
 obfuscator(options, function (err, obfuscated) {
   if (err) {
     throw err;
@@ -97,7 +109,6 @@ Undoing this process is hopefully as painful as decompiling java bytecode.
 - everything (including json, subdirectories, etc.) must be in the `root` of your project.
 - you're not able to use many of the native module's `require` features; only `require.cache` and `require.resolve` have been exposed.
 - you're not able to do silly things with `module.`
-- you don't have access to the global namespace
 
 ## Contributing
 
