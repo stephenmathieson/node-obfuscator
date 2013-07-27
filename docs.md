@@ -1,6 +1,6 @@
 # Obfuscator Documentation
 
-###  `obfuscator.obfuscator(options, cb)`
+###  `obfuscator(options, cb)`
 
 #### Parameters
 

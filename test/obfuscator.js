@@ -17,13 +17,17 @@ fixture.read = function (file) {
 };
 
 describe('obfuscator', function () {
-  it('should be an object', function () {
-    obfuscator.should.be.an.object;
+  it('should be a function', function () {
+    obfuscator.should.be.a.function;
   });
 
   describe('.obfuscator', function () {
     it('should be a function', function () {
       obfuscator.obfuscator.should.be.a.function;
+    });
+
+    it('should mirror obfuscator', function () {
+      obfuscator.obfuscator.should.be.equal(obfuscator);
     });
 
     it('should error when given invalid options', function (done) {
