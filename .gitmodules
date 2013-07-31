@@ -1,0 +1,3 @@
+[submodule "examples/component-builder"]
+	path = examples/component-builder
+	url = git@github.com:component/builder.js.git

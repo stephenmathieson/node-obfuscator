@@ -24,7 +24,8 @@
     "jshint": "~2.0.1",
     "should": "~1.2.2",
     "supertest": "~0.6.0",
-    "better-assert": "~1.0.0"
+    "better-assert": "~1.0.0",
+    "glob": "~3.2.6"
   },
   "bin": "bin/obfuscator",
   "main": "index.js",
