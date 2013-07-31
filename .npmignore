@@ -1,0 +1,8 @@
+examples/
+lib-cov/
+test/
+.editorconfig
+.jshintrc
+.travis.yml
+coverage.html
+Makefile
