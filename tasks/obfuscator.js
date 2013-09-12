@@ -47,6 +47,8 @@ module.exports = function (grunt) {
         grunt.log.write('Project obfuscated to ');
         grunt.log.write(out.cyan);
         grunt.log.write('.\n');
+
+        next();
       });
     });
   });
