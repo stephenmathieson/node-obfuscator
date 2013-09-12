@@ -117,6 +117,10 @@ Do it, but add tests for your changes.  Tests should be written with [Mocha].
 
 ## Release History
 
+### 0.2.1
+
+- fixed grunt task ([#9](https://github.com/stephenmathieson/node-obfuscator/pull/9))
+
 ### 0.2.0
 
 - fixed windows pathing bug ([#8](https://github.com/stephenmathieson/node-obfuscator/pull/8))
