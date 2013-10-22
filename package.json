@@ -1,6 +1,6 @@
 {
   "name": "obfuscator",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "scripts": {
     "test": "make validate"
   },
@@ -16,7 +16,7 @@
     "url": "git://github.com/stephenmathieson/node-obfuscator.git"
   },
   "dependencies": {
-    "uglify-js": "~2.3.6",
+    "uglify-js": "~2.4.0",
     "commander": "~2.0.0"
   },
   "devDependencies": {
