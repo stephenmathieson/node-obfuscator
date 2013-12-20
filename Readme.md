@@ -37,34 +37,7 @@ Because I had this conversation:
 $ obfuscator --entry app.js ./app.js ./routes/index.js ./routes/user.js
 ```
 
-### Grunt
-
-Tested with both 0.3.x and 0.4.x.  It should work until the [grunt] people change everything again.
-
-```javascript
-module.exports = function (grunt) {
-  'use strict';
-
-  grunt.loadNpmTasks('obfuscator'); // load the task
-
-  grunt.initConfig({
-    obfuscator: {
-      files: [
-        'app.js',
-        'lib/routes/*.js'
-      ],
-      entry: 'app.js',
-      out: 'obfuscated.js',
-      strings: true,
-      root: __dirname
-    }
-  });
-
-  grunt.registerTask('default', 'obfuscator');
-};
-```
-
-### Raw JavaScript API
+### JavaScript API
 
 ```javascript
 var Options = require('obfuscator').Options;
@@ -152,5 +125,4 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 [UglifyJS]: https://github.com/mishoo/UglifyJS2
 [Mocha]: https://github.com/visionmedia/mocha
 [acceptance tests]: https://github.com/stephenmathieson/node-obfuscator/tree/master/test/acceptance
-[grunt]: https://github.com/gruntjs/grunt
 [docs]: https://github.com/stephenmathieson/node-obfuscator/tree/master/docs.md
