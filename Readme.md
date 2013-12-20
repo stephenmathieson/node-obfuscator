@@ -55,7 +55,8 @@ module.exports = function (grunt) {
       ],
       entry: 'app.js',
       out: 'obfuscated.js',
-      strings: true
+      strings: true,
+      root: __dirname
     }
   });
 
