@@ -1,7 +1,7 @@
 
 ACCEPTANCE_TESTS := $(wildcard test/acceptance/*.js)
 
-validate: lint test test-acceptance
+all: lint test test-acceptance
 
 lint:
 	@node_modules/.bin/jshint \
