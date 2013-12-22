@@ -407,30 +407,29 @@ describe('obfuscator', function () {
     });
 
     describe('.strings()', function () {
-      it('should ignore single-quote strings', function () {
-        var code = "var foo = 'bar';";
-
-        utils.strings(code).should.be.equal(code);
+      it('should not ignore single-quote strings', function () {
+        var code = "var foo = 'bar'";
+        utils.strings(code).should.be.equal('var foo = "\\x62\\x61\\x72"');
       });
 
-      it('should ignore strings which contain spaces', function () {
+      it('should not ignore strings which contain spaces', function () {
         var code = 'var foo = "b a r"';
-        utils.strings(code).should.be.equal(code);
+        utils.strings(code).should.be.equal('var foo = "\\x62\\x20\\x61\\x20\\x72"');
       });
 
       it('should ignore strings which contain "+"', function () {
         var code = 'var foo = "b+a+r"';
-        utils.strings(code).should.be.equal(code);
+        utils.strings(code).should.be.equal('var foo = "\\x62\\x2b\\x61\\x2b\\x72"');
       });
 
       it('should ignore strings which contain ";"', function () {
         var code = 'var foo = "b;a;r"';
-        utils.strings(code).should.be.equal(code);
+        utils.strings(code).should.be.equal('var foo = "\\x62\\x3b\\x61\\x3b\\x72"');
       });
 
       it('should ignore strings which contain ","', function () {
         var code = 'var foo = "b,a,r"';
-        utils.strings(code).should.be.equal(code);
+        utils.strings(code).should.be.equal('var foo = "\\x62\\x2c\\x61\\x2c\\x72"');
       });
 
       it('should obfuscate a double-quote simple string', function () {
