@@ -13,20 +13,11 @@ lint:
 test:
 	@node_modules/.bin/mocha -R spec -r should
 
-test-acceptance: examples/express/node_modules \
-		examples/component-builder/package.json \
-		examples/component-builder/node_modules \
-		$(ACCEPTANCE_TESTS)
+test-acceptance: examples/express/node_modules $(ACCEPTANCE_TESTS)
 	@echo 'everything looks good'
 
 examples/express/node_modules:
 	cd examples/express; npm install
-
-examples/component-builder/package.json:
-	git submodule update --init
-
-examples/component-builder/node_modules:
-	cd examples/component-builder; npm install
 
 $(ACCEPTANCE_TESTS):
 	node $@

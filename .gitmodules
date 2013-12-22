@@ -1,3 +1,0 @@
-[submodule "examples/component-builder"]
-	path = examples/component-builder
-	url = https://github.com/component/builder.js.git
