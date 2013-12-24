@@ -1,17 +1,16 @@
-'use strict';
 
 var url = require('url');
 
 var config = require('./config.json');
 
-module.exports = function (request, response) {
-  var parsed = url.parse(request.url, true);
+module.exports = function (req, res) {
+  var parsed = url.parse(req.url, true);
 
-  response.writeHead(200, { 'Content-Type': 'text/plain' });
-  if (parsed.query.foo === 'bar') {
-    response.write(config.bar);
+  res.writeHead(200, { 'content-type': 'text/plain' });
+  if ('bar' === parsed.query.foo) {
+    res.write(config.bar);
   } else {
-    response.write(config.foo);
+    res.write(config.foo);
   }
-  response.end();
+  res.end();
 };

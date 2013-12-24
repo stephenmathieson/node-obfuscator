@@ -1,10 +1,9 @@
-'use strict';
 
-var path = require('path'),
-    assert = require('assert'),
-    fs = require('fs'),
-    supertest = require('supertest'),
-    obfuscator = require('../..');
+var path = require('path');
+var assert = require('assert');
+var fs = require('fs');
+var supertest = require('supertest');
+var obfuscator = require('../..');
 
 var EXAMPLES = path.join(__dirname, '..', '..', 'examples');
 
@@ -22,13 +21,13 @@ obfuscator.obfuscator(opts, function (err, code) {
     throw err;
   }
 
-  var app, request,
-      file = path.join(EXAMPLES, 'express', 'obfuscated.js');
+  var file = path.join(EXAMPLES, 'express', 'obfuscated.js');
 
   fs.writeFileSync(file, code);
-  app = require(file).app;
+
+  var app = require(file).app;
   app.listen(3344, function () {
-    request = supertest(app);
+    var request = supertest(app);
     request.get('/').expect(200, function () {
       request.get('/users').expect(200, process.exit);
     });

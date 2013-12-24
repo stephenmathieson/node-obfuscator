@@ -1,9 +1,8 @@
-'use strict';
 
-var path = require('path'),
-    assert = require('assert'),
-    fs = require('fs'),
-    obfuscator = require('../..');
+var path = require('path');
+var assert = require('better-assert');
+var fs = require('fs');
+var obfuscator = require('../..');
 
 var EXAMPLES = path.join(__dirname, '..', '..', 'examples');
 
@@ -23,5 +22,5 @@ obfuscator.obfuscator(opts, function (err, code) {
 
   var file = path.join(EXAMPLES, 'basic', 'obfuscated.js');
   fs.writeFileSync(file, code);
-  assert.equal(require(file).helloWorld(), 'hello world');
+  assert('hello world' === require(file).helloWorld());
 });
