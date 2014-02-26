@@ -8,7 +8,7 @@ var obfusactor = require('../..');
 var dir = path.join(__dirname, '../../examples/json-everywhere');
 
 try {
-  fs.unlinkSync(path.join(dir, 'obfusacted.js'));
+  fs.unlinkSync(path.join(dir, 'obfuscated.js'));
 } catch (e) {}
 
 var opts = {
@@ -20,7 +20,7 @@ var opts = {
 
 obfusactor(opts, function (err, js) {
   if (err) throw err;
-  var file = path.join(dir, 'obfusacted.js');
+  var file = path.join(dir, 'obfuscated.js');
   fs.writeFile(file, js, function (err) {
     if (err) throw err;
     var app = require(file);
