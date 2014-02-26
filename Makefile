@@ -1,37 +1,59 @@
 
-ACCEPTANCE_TESTS := $(wildcard test/acceptance/*.js)
+BINS = node_modules/.bin
+SRC = index.js $(wildcard lib/*.js)
+TESTS = $(wildcard test/*.js)
+EXAMPLES = $(wildcard examples/*/*.js)
+ACCEPTANCE = $(wildcard test/acceptance/*.js)
+
+MOCHA_REPORTER ?= spec
+JSCOVERAGE ?= jscoverage
 
 all: lint test test-acceptance
 
-lint:
-	@node_modules/.bin/jshint \
-		--verbose \
-		index.js \
-		lib/*.js \
-		test/*.js
+test: node_modules
+	@$(BINS)/mocha \
+		-R $(MOCHA_REPORTER) \
+		-r should
 
-test:
-	@node_modules/.bin/mocha -R spec -r should
-
-test-acceptance: examples/express/node_modules $(ACCEPTANCE_TESTS)
+test-acceptance: examples/resolve/node_modules \
+		examples/express/node_modules \
+		$(ACCEPTANCE)
 	@echo 'everything looks good'
 
-examples/express/node_modules:
-	cd examples/express; npm install
+examples/resolve/node_modules: examples/resolve/package.json
+	@cd examples/resolve; npm install
 
-$(ACCEPTANCE_TESTS):
+examples/express/node_modules: examples/express/package.json
+	@cd examples/express; npm install
+
+$(ACCEPTANCE):
 	node $@
 
-test-cov:
-	@rm -rf lib-cov
-	jscoverage lib lib-cov
-	@OBF_COV=1 node_modules/.bin/mocha -r should -R html-cov > coverage.html
+test-cov: coverage.html
+	@open coverage.html
 
-docs:
-	@docs \
-		--out docs.md \
-		--title "Obfuscator Documentation" \
-		--type md \
-		lib/obfuscator.js lib/utils.js
+coverage.html: node_modules lib-cov $(TESTS)
+	@OBF_COV=1 \
+		MOCHA_REPORTER=html-cov \
+		$(MAKE) test > coverage.html
 
-.PHONY: lint test-cov test $(ACCEPTANCE_TESTS)
+lib-cov: $(SRC)
+	@rm -rf $@
+	@$(JSCOVERAGE) lib $@
+
+lint: node_modules
+	@$(BINS)/jshint \
+		--verbose \
+		$(SRC) \
+		$(TESTS) \
+		$(ACCEPTANCE)
+
+node_modules: package.json
+	@npm install
+
+clean:
+	rm -rf examples/*/obfuscated.js
+	rm -rf examples/*/node_modules
+	rm -rf lib-cov coverage.html
+
+.PHONY: test $(ACCEPTANCE) clean
