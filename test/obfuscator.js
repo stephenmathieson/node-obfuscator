@@ -230,7 +230,7 @@ describe('obfuscator', function () {
       });
 
       it('should contain the require mock', function () {
-        code.should.include(read(path.join(__dirname, '../lib/require.js')));
+        code.should.include('function require(');
       });
 
       it('should export the entry point\'s exports', function () {
@@ -274,7 +274,7 @@ describe('obfuscator', function () {
       });
 
       it('should contain the require mock', function () {
-        code.should.include(read(path.join(__dirname, '../lib/require.js')));
+        code.should.include('function require(');
       });
 
       it('should export the entry point\'s exports', function () {
