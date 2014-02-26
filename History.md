@@ -2,7 +2,7 @@
 0.4.0 / 2014-02-26
 ==================
 
- * Add test for GH-12
+ * Add `resolve.resolve` support ([GH-12](https://github.com/stephenmathieson/node-obfuscator/issues/12))
  * Fix mocked require tests
  * Cleanup makefile
  * Refactor JSON file support
