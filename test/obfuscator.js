@@ -403,6 +403,11 @@ describe('obfuscator', function () {
         utils.hex('baz').should.be.equal('\\x62\\x61\\x7a');
         utils.hex('qaz').should.be.equal('\\x71\\x61\\x7a');
         utils.hex('dat').should.be.equal('\\x64\\x61\\x74');
+        utils.hex('\b').should.be.equal('\\b');
+        utils.hex('\f').should.be.equal('\\f');
+        utils.hex('\n').should.be.equal('\\n');
+        utils.hex('\r').should.be.equal('\\r');
+        utils.hex('\t').should.be.equal('\\t');
       });
     });
 
