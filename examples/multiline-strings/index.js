@@ -1,7 +1,7 @@
 
 var str =
   'hello\
-  world\
+  \'world\'\
   \"and\"\
   stuff';
 
