@@ -28,6 +28,5 @@
     "glob": "~3.2.7"
   },
   "bin": "bin/obfuscator",
-  "main": "index.js",
-  "preferGlobal": true
+  "main": "index.js"
 }
