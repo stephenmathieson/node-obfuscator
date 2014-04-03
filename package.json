@@ -27,6 +27,17 @@
     "better-assert": "~1.0.0",
     "glob": "~3.2.7"
   },
-  "bin": "bin/obfuscator",
-  "main": "index.js"
+  "bin": {
+    "obfuscator": "bin/obfuscator"
+  },
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/stephenmathieson/node-obfuscator/issues"
+  },
+  "homepage": "https://github.com/stephenmathieson/node-obfuscator",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "license": "MIT"
 }
