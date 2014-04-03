@@ -17,5 +17,5 @@ obfuscator(opts, function (err, code) {
   fs.writeFileSync(file, code);
 
   var module = require(file);
-  assert('hello  world  and  stuff' == module.fn());
+  assert('hello  world  "and"  stuff' == module.fn());
 });

@@ -2,7 +2,7 @@
 var str =
   'hello\
   world\
-  and\
+  \"and\"\
   stuff';
 
 exports.fn = function () {
