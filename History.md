@@ -1,4 +1,11 @@
 
+0.4.2 / 2014-04-07
+==================
+
+ * pkg: npm init
+ * pkg: Remove 'preferGlobal'
+ * Use Uglify's TreeTransformer to mangle strings rather than regular expressions.
+
 0.4.1 / 2014-03-31
 ==================
 
