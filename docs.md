@@ -87,6 +87,6 @@ Example:
 
 ```js
 utils.strings('var foo = "foo"';);
-//=> 'var foo = "\\x66\\x6f\\x6f";'
+//=> 'var foo = "\x66\x6f\x6f";'
 ```
 
