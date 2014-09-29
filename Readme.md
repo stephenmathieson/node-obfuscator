@@ -5,10 +5,6 @@
 
 Obfuscate your node packages because your boss says so!
 
-## Installation
-
-Standard node install via [npm]: `npm i obfuscator`
-
 ## Why?
 
 Because I had this conversation:
@@ -27,7 +23,7 @@ Because I had this conversation:
 
 > **boss**: but decompiling java is a lot of work.
 
-> **me**: so is [un-obfuscating javascript]!
+> **me**: so is [un-obfuscating javascript](http://github.com/stephenmathieson/node-obfuscator)!
 
 ## Usage
 
@@ -70,11 +66,11 @@ obfuscator(options, function (err, obfuscated) {
 });
 ```
 
-Also see [acceptance tests] or the [docs].
+Also see [acceptance tests](https://github.com/stephenmathieson/node-obfuscator/tree/master/test/acceptance) or the [docs](https://github.com/stephenmathieson/node-obfuscator/tree/master/docs.md).
 
 ## How it Works
 
-Think [browserify] only for node, plus [UglifyJs].  Your entire project will be concatenated into a single file.  This file will contain a stubbed `require` function, which will handle everything for you.  This single file will be run through [UglifyJs], making it more difficult to read.
+Think [browserify](https://github.com/substack/node-browserify) only for node, plus [UglifyJs](https://github.com/mishoo/UglifyJS2).  Your entire project will be concatenated into a single file.  This file will contain a stubbed `require` function, which will handle everything for you.  This single file will be run through [UglifyJs](https://github.com/mishoo/UglifyJS2), making it more difficult to read.
 
 Undoing this process is hopefully as painful as decompiling java bytecode.
 
@@ -83,15 +79,7 @@ Undoing this process is hopefully as painful as decompiling java bytecode.
 - everything (including json, subdirectories, etc.) must be in the `root` of your project.
 - you're not able to use many of the native module's `require` features; only `require.cache` and `require.resolve` have been exposed.
 - you're not able to do silly things with `module.`
-
-## Contributing
-
-Do it, but add tests for your changes.  Tests should be written with [Mocha].
-
-
-## Release History
-
-  See [History.md](https://github.com/stephenmathieson/node-obfuscator/blob/master/History.md)
+- dynamically built `require()`s are not supported; chances are, there's a significantly cleaner way of handling loading your depenencies anyway.
 
 ## License
 
@@ -117,12 +105,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-[npm]: https://github.com/isaacs/npm
-[un-obfuscating javascript]: http://github.com/stephenmathieson/node-obfuscator
-[browserify]: https://github.com/substack/node-browserify
-[UglifyJS]: https://github.com/mishoo/UglifyJS2
-[Mocha]: https://github.com/visionmedia/mocha
-[acceptance tests]: https://github.com/stephenmathieson/node-obfuscator/tree/master/test/acceptance
-[docs]: https://github.com/stephenmathieson/node-obfuscator/tree/master/docs.md
