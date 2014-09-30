@@ -18,12 +18,14 @@ program
   .option('--out <file>',       'The output file', String)
   .option('--no-color',         'Disable colored output', Boolean, false)
   .option('--strings',          'Obfuscate strings contained in the project')
+  .option('--excludes <files ...>', 'Excluding files that will be natively required for the project')
   .parse(process.argv);
 
 var options = new Options(program.args,
   program.root,
   program.entry,
-  program.strings);
+  program.strings,
+  program.excludes);
 
 obfuscator(options, function (err, obfuscated) {
   if (err) {
