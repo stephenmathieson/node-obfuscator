@@ -1,4 +1,13 @@
 
+0.5.0 / 2014-09-30
+==================
+
+  * require: Fallback to the native `require()`
+  * .jshintrc: Relax options
+  * examples: Add a "non-included file" example
+  * Readme: Add note about stupid usage of `require()`
+  * docs: Use escaped string
+
 0.4.2 / 2014-04-07
 ==================
 
