@@ -1,6 +1,6 @@
 {
   "name": "obfuscator",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "scripts": {
     "test": "make all"
   },
