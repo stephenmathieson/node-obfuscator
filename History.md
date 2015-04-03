@@ -1,4 +1,9 @@
 
+0.5.1 / 2015-04-03
+==================
+
+  * require: Also throw the error native_require returns (@JamyDev, #20)
+
 0.5.0 / 2014-09-30
 ==================
 
