@@ -1,4 +1,11 @@
 
+0.5.3 / 2015-09-01
+==================
+
+  * register: ensure a trailing newline after each file's contents (#26)
+  * package: update "mocha" to 2.3.0
+  * test: add assertions for files with trailing commas
+
 0.5.2 / 2015-04-03
 ==================
 
