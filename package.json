@@ -20,12 +20,12 @@
     "commander": "~2.0.0"
   },
   "devDependencies": {
-    "mocha": "~1.9.0",
-    "jshint": "~2.0.1",
-    "should": "~1.2.2",
-    "supertest": "~0.6.0",
     "better-assert": "~1.0.0",
-    "glob": "~3.2.7"
+    "glob": "~3.2.7",
+    "jshint": "~2.0.1",
+    "mocha": "^2.3.0",
+    "should": "~1.2.2",
+    "supertest": "~0.6.0"
   },
   "bin": {
     "obfuscator": "bin/obfuscator"
