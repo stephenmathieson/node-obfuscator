@@ -102,6 +102,12 @@ describe('obfuscator', function () {
         done();
       });
     });
+
+    it('should support files with trailing comments', function(done){
+      var file = fixture('comment-at-end/index.js');
+      var opts = obfuscator.options([ file ], FIXTURES, file);
+      obfuscator.obfuscator(opts, done);
+    });
   });
 
   describe('.options()', function () {
