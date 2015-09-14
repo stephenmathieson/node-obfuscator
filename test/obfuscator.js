@@ -44,7 +44,7 @@ describe('obfuscator', function () {
     it('should obfuscate a package', function (done) {
       var opts = obfuscator.options([
               fixture('basic/hello.js'),
-              fixture('basic/world.js'),
+              fixture('basic/index.js'),
               fixture('basic/hello-world.js')
             ],
             FIXTURES,
@@ -63,7 +63,7 @@ describe('obfuscator', function () {
     it('should not obfuscate strings by default', function (done) {
       var opts = obfuscator.options([
               fixture('basic/hello.js'),
-              fixture('basic/world.js'),
+              fixture('basic/index.js'),
               fixture('basic/hello-world.js')
             ],
             FIXTURES,
@@ -75,7 +75,7 @@ describe('obfuscator', function () {
         }
 
         code.should.include('basic/hello');
-        code.should.include('basic/world');
+        code.should.include('basic/index');
         code.should.include('basic/hello-world');
         done();
       });
@@ -84,7 +84,7 @@ describe('obfuscator', function () {
     it('should obfuscate strings when strings=true', function (done) {
       var opts = obfuscator.options([
               fixture('basic/hello.js'),
-              fixture('basic/world.js'),
+              fixture('basic/index.js'),
               fixture('basic/hello-world.js')
             ],
             FIXTURES,
@@ -97,7 +97,7 @@ describe('obfuscator', function () {
         }
 
         code.should.not.include('basic/hello');
-        code.should.not.include('basic/world');
+        code.should.not.include('basic/index');
         code.should.not.include('basic/hello-world');
         done();
       });
@@ -255,7 +255,7 @@ describe('obfuscator', function () {
         obfuscator.concatenate({
           files: [
             fixture('basic/hello.js'),
-            fixture('basic/world.js'),
+            fixture('basic/index.js'),
             fixture('basic/hello-world.js')
           ],
           root: path.join(FIXTURES, 'basic'),
@@ -271,7 +271,7 @@ describe('obfuscator', function () {
 
       it('should wrap each file', function () {
         code.should.include(fixture.read('basic/hello.js'));
-        code.should.include(fixture.read('basic/world.js'));
+        code.should.include(fixture.read('basic/index.js'));
         code.should.include(fixture.read('basic/hello-world.js'));
       });
 
