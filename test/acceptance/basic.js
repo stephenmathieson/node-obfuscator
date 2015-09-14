@@ -8,7 +8,7 @@ var EXAMPLES = path.join(__dirname, '..', '..', 'examples');
 
 var opts = obfuscator.options([
     path.join(EXAMPLES, 'basic', 'hello.js'),
-    path.join(EXAMPLES, 'basic', 'world.js'),
+    path.join(EXAMPLES, 'basic', 'index.js'),
     path.join(EXAMPLES, 'basic', 'hello-world.js')
   ],
   EXAMPLES,

@@ -1,6 +1,6 @@
 exports.helloWorld = function () {
   var hello = require('./hello').hello;
-  var world = require('./world').world;
+  var world = require('./').world;
 
   return hello + ' ' + world;
 };
