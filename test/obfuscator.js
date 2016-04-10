@@ -414,6 +414,8 @@ describe('obfuscator', function () {
         utils.hex('\n').should.be.equal('\\n');
         utils.hex('\r').should.be.equal('\\r');
         utils.hex('\t').should.be.equal('\\t');
+        utils.hex('\\').should.be.equal('\\\\');
+        utils.hex('\\\t').should.be.equal('\\\\\\t');
       });
     });
   });
