@@ -1,4 +1,10 @@
 
+# maintainer wanted
+
+if you want this package, open an issue or email me
+
+<br><br><br><br><br><br><br><br><br><br>
+
 # Obfuscator
 
 [![Build Status](https://travis-ci.org/stephenmathieson/node-obfuscator.png?branch=master)](https://travis-ci.org/stephenmathieson/node-obfuscator) [![Dependency Status](https://gemnasium.com/stephenmathieson/node-obfuscator.png)](https://gemnasium.com/stephenmathieson/node-obfuscator)
